@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Backend;
+<?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,13 +21,13 @@ class MenuController extends Controller {
 
 		$menu 	= new Menu;
 		$menu   = $menu->getHTML($items);
-		return view('backend.menus.builder', array('items'=>$items,'menu'=>$menu,'pageheader'=>$pageheader));
+		return view('menus.builder', array('items'=>$items,'menu'=>$menu,'pageheader'=>$pageheader));
 	}
 
 	public function Edit($id)
 	{	
 		$item = Menu::find($id);
-		return view('backend.menus.edit', array('item'=>$item));
+		return view('menus.edit', array('item'=>$item));
 	}
 
 	public function menuEdit($id)

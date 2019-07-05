@@ -41,7 +41,7 @@ Route::group(['middleware' => ['permission:view_roles,true']], function (){
 Route::group(['prefix' => '/admin/menus'], function()
 {
     // Showing the admin for the menu builder and updating the order of menu items
-    Route::get('/', 'MenuController@Index');
+    Route::get('/', 'MenuController@Index')->name('menu.index');
     Route::post('order', 'MenuController@postIndex');
     Route::post('new', 'MenuController@postNew');
     Route::get('edit/{id}', 'MenuController@Edit');

@@ -69,7 +69,13 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="app-sidebar__heading">Categories and Sub-Categories</li>
+                <li>
+                    <a href="{{route('menu.index')}}">
+                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        Category
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
