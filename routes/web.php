@@ -44,7 +44,7 @@ Route::group(['prefix' => '/admin/menus'], function()
     Route::get('/', 'MenuController@Index')->name('menu.index');
     Route::get('/create','MenuController@create')->name('menu.create');
     Route::post('order', 'MenuController@postIndex');
-    Route::post('new', 'MenuController@postNew');
+    Route::post('new', 'MenuController@postNew')->name('menu.store');
     Route::get('edit/{id}', 'MenuController@Edit');
     Route::post('edit/{id}', 'MenuController@menuEdit');
     Route::post('delete', 'MenuController@menuDelete');

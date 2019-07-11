@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
-use Input;
+use Illuminate\Support\Facades\Input;
 use File;
 
 class MenuController extends Controller {
@@ -102,22 +102,9 @@ class MenuController extends Controller {
 	{
 		// Create a new menu item and save it
 		$item = new Menu;
-
 		$item->title 	= e(Input::get('title','untitled'));
 		$item->label 	= e(Input::get('label',''));	
-		$item->url 		= e(Input::get('url',''));	
 		$item->menu_position = e(Input::get('menu_position',''));	
-		$item->login_condition = e(Input::get('login_condition',''));	
-		if(Input::hasFile('icon'))
-        {
-		$filename = Input::file('icon');
-		$destinationPath = public_path(). '/img/';                           
-        $change = $filename->getClientOriginalName();
-        $filename->move($destinationPath, str_replace(' ', '-', strtolower($change)));  
-		}else{
-			$change = '';
-		}
-		$item->icon 		= e(str_replace(' ', '-', strtolower($change)));	
 		$item->order 	= Menu::max('order')+1;
 		$item->save();
 		return redirect()->to('admin/menus');

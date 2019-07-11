@@ -15,28 +15,34 @@
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <form id="category-form" class="" method="POST" action="#">
+                <form id="category-form" class="" method="POST" action="{{route('menu.store')}}">
                         {{csrf_field()}}
-                        <div class="position-relative row form-group"><label for="name" class="col-sm-2 col-form-label">Full Name</label>
+                        <div class="position-relative row form-group"><label for="title" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input name="name" id="name" placeholder="Enter name" type="text" class="form-control" required>
+                                <input name="title" id="title" placeholder="Enter title" type="text" class="form-control" required>
                             </div>
                         </div>
-                        <div class="position-relative row form-group"><label for="name" class="col-sm-2 col-form-label">Full Name</label>
+                        <div class="position-relative row form-group"><label for="label" class="col-sm-2 col-form-label">Label</label>
                             <div class="col-sm-10">
-                                <input name="name" id="name" placeholder="Enter name" type="text" class="form-control" required>
+                                <input name="label" id="label" placeholder="Enter label name" type="text" class="form-control" required>
                             </div>
                         </div>
-                        <div class="position-relative row form-group"><label for="name" class="col-sm-2 col-form-label">Full Name</label>
+                        <div class="position-relative row form-group"><label for="order" class="col-sm-2 col-form-label">Order</label>
                             <div class="col-sm-10">
-                                <input name="name" id="name" placeholder="Enter name" type="text" class="form-control" required>
+                                <input name="order" id="order" placeholder="Enter order" type="number" class="form-control" required>
                             </div>
                         </div>
-                        <div class="position-relative row form-group"><label for="name" class="col-sm-2 col-form-label">Full Name</label>
+                        <div class="position-relative row form-group"><label for="position" class="col-sm-2 col-form-label">Position</label>
                             <div class="col-sm-10">
-                                <input name="name" id="name" placeholder="Enter name" type="text" class="form-control" required>
+                                <input name="menu_position" id="position" placeholder="Enter position" type="text" class="form-control" required>
                             </div>
                         </div>
+                        <div class="position-relative row form-check">
+                                <div class="col-sm-10 offset-sm-2">
+                                    <button class="btn btn-outline-success" type="submit">Submit</button>
+                                    <a class="btn btn-outline-danger" href="{{route('menu.index')}}">Cancel</a>
+                                </div>
+                            </div>
                     </form>
                 </div>
             </div>
