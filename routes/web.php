@@ -42,6 +42,7 @@ Route::group(['prefix' => '/admin/menus'], function()
 {
     // Showing the admin for the menu builder and updating the order of menu items
     Route::get('/', 'MenuController@Index')->name('menu.index');
+    Route::get('/create','MenuController@create')->name('menu.create');
     Route::post('order', 'MenuController@postIndex');
     Route::post('new', 'MenuController@postNew');
     Route::get('edit/{id}', 'MenuController@Edit');

@@ -24,6 +24,11 @@ class MenuController extends Controller {
 		return view('menus.builder', array('items'=>$items,'menu'=>$menu,'pageheader'=>$pageheader));
 	}
 
+
+	public function create(){
+		return view('menus.createmenu');
+	}
+
 	public function Edit($id)
 	{	
 		$item = Menu::find($id);
