@@ -38,7 +38,10 @@ Route::group(['middleware' => ['permission:view_roles,true']], function (){
 });
 
 
-Route::group(['prefix' => '/admin/menus'], function()
+Route::group([
+    'prefix' => '/admin/menus',
+    'middleware' => ['permission:view_categories,true']
+    ], function()
 {
     // Showing the admin for the menu builder and updating the order of menu items
     Route::get('/', 'MenuController@Index')->name('menu.index');

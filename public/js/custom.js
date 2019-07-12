@@ -40,4 +40,46 @@ $(document).ready(function () {
        .fail(function() { console.log('error'); })
      }
    }); 
-})
+});
+
+$(document).ready(function(){
+//   $('.delete_toggle').each(function(index,elem) {
+//     $(elem).click(function(e){
+//       e.preventDefault();
+//       $('#postvalue').attr('value',$(elem).attr('rel'));
+//       $('#deleteModal').modal('toggle');
+//     });
+// });
+
+  $('.delete_toggle').on('click', function(){
+    var id = $(this).attr('rel');
+    var confirmation =confirm("Are you sure?")
+    if(confirmation){
+        $.ajax({
+          type: 'POST',
+          url: base_url + '/admin/menus/delete',
+          data: {id: id},
+          headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .done(function(data){
+          var redirect = base_url + '/admin/menus';
+          console.log(data);
+          if(data.success){
+            toastr.success("Category successfully deleted");
+            window.location.href = redirect;
+          }else{
+            toastr.error("Error in deleting category");
+            window.location.href = redirect;
+            
+          }
+          
+        })
+        .fail(function(){
+          toastr.error("Error in deleting category");
+        });
+    }
+    
+  });
+});

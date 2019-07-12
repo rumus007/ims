@@ -44,7 +44,7 @@ class MenuController extends Controller {
 		$item->order 	= Menu::max('order')+1;
 
 		$item->save();
-
+		toastr()->success('Category successfully updated');
 		return redirect()->to("admin/menus");
 	}
 
@@ -89,14 +89,15 @@ class MenuController extends Controller {
 		$item->menu_position = e(Input::get('menu_position',''));	
 		$item->order 	= Menu::max('order')+1;
 		$item->save();
+		toastr()->success('Category successfully created');
 		return redirect()->to('admin/menus');
 	}
 
-	public function menuDelete()
+	public function menuDelete(Request $request)
 	{
-		$id = Input::get('delete_id');
+		$id = $request->id;
 		// Find all items with the parent_id of this one and reset the parent_id to zero
-		$items = Menu::where('id', $id)->get()->each(function($item)
+		$items = Menu::where('parent_id', $id)->get()->each(function($item)
 		{
 			$item->parent_id = 0;  
 			$item->save();  
@@ -104,14 +105,12 @@ class MenuController extends Controller {
 
 		// Find and delete the item that the user requested to be deleted
 		$item = Menu::find($id);
-		$hName = $item->icon;
-        if (!empty($hName)) {
-            if (File::exists('public/img/'.$hName)) {
-                unlink('public/img/'.$hName);
-            }
-        }
-		$item->delete();
+		if($item->delete()){
+			return response()->json(array('success' => true, 'stat' => 'ok'));
+		}else{
+			return response()->json(array('success' => false, 'stat' => 'not ok'));
+		}
 
-		return redirect()->to('admin/menus');
+		
 	}
 }
