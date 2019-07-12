@@ -26,7 +26,7 @@ class MenuController extends Controller {
 
 
 	public function create(){
-		return view('menus.createmenu');
+		return view('menus.create');
 	}
 
 	public function Edit($id)
@@ -40,26 +40,8 @@ class MenuController extends Controller {
 		$item = Menu::find($id);
 		$item->title 	= e(Input::get('title','untitled'));
 		$item->label 	= e(Input::get('label',''));	
-		$item->url 		= e(Input::get('url',''));	
 		$item->menu_position = e(Input::get('menu_position',''));	
-		$item->login_condition = e(Input::get('login_condition',''));	
-		if(Input::hasFile('icon'))
-        {
-		$filename = Input::file('icon');
-		$destinationPath = public_path(). '/img/';                           
-        $change = $filename->getClientOriginalName();
-        $filename->move($destinationPath, str_replace(' ', '-', strtolower($change)));  
-		}else{
-
-			if( !empty( $item->icon) ){
-                            $change = $item->icon;
-                        }
-                        else{
-                                $change = '';
-            }
-			
-		}
-		$item->icon 		= e( $change );	
+		$item->order 	= Menu::max('order')+1;
 
 		$item->save();
 

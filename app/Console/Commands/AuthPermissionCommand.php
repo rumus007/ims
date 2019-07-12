@@ -79,7 +79,7 @@ class AuthPermissionCommand extends Command
         $name = $this->getNameArgument();
 
         return array_map(function($val) use ($name) {
-            return $val . '-'. $name;
+            return $val . '_'. $name;
         }, $abilities);
     }
 

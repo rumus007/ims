@@ -30,6 +30,9 @@ $(document).ready(function () {
                     rootOrder:JSON.stringify(rootOrder) 
                 },
             dataType: 'json',
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
         })
        .done(function(data) { 
           $( "#success-indicator" ).fadeIn(100).delay(1000).fadeOut();

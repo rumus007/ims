@@ -8,11 +8,13 @@
           Category Management
         </div>
       </div>
+      @permission('add_categories')
       <div class="page-title-actions">
         <div>
-        <a href="{{route('menu.create')}}" class="btn-shadow btn btn-info">Add New Menu</a>
+        <a href="{{route('menu.create')}}" class="btn-shadow btn btn-info">Add New Category</a>
         </div>
       </div>
+      @endpermission
     </div>
   </div>
   <div class="row">
@@ -36,37 +38,6 @@
   </div>
 </div>
 
-{{-- <div class="row">
-  <div class="col-md-8 menu-page">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">Menu
-          <!-- <label for="file" class="control-lable">Upload Featured Image</label> -->
-        </h3>
-        <div class="pull-right">
-          <a href="#newModal" class="btn btn-primary pull-right" data-toggle="modal"><i
-              class="fa fa-plus-circle"></i>Add New Menu</a>
-        </div><!-- /.box-tools -->
-      </div>
-      <div class="box-body">
-
-
-        <div class="dd" id="nestable">
-          {!! $menu !!}
-        </div>
-
-        <p id="success-indicator" style="display:none; margin-right: 10px;">
-          <span class="glyphicon glyphicon-ok"></span> Menu order has been saved
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="well">
-      <p>Drag items to move them in a different order</p>
-    </div>
-  </div>
-</div> --}}
 
 <!-- Create new item Modal -->
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

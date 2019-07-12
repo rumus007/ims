@@ -4,10 +4,10 @@
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
-                        data-class="closed-sidebar">
-                                    <span class="hamburger-box">
-                                        <span class="hamburger-inner"></span>
-                                    </span>
+                    data-class="closed-sidebar">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
                 </button>
             </div>
         </div>
@@ -15,21 +15,20 @@
     <div class="app-header__mobile-menu">
         <div>
             <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
             </button>
         </div>
     </div>
     <div class="app-header__menu">
-                        <span>
-                            <button type="button"
-                                    class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                                <span class="btn-icon-wrapper">
-                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
-                                </span>
-                            </button>
-                        </span>
+        <span>
+            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                <span class="btn-icon-wrapper">
+                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                </span>
+            </button>
+        </span>
     </div>
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
@@ -41,13 +40,17 @@
                         Dashboard
                     </a>
                 </li>
+                @permission('manage_settings','manage_users','manage_roles')
                 <li class="app-sidebar__heading">Settings</li>
+                @permission('manage_settings')
                 <li>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-diamond"></i>
                         General Settings
                     </a>
                 </li>
+                @endpermission
+                @permission('manage_users','manage_users')
                 <li>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-car"></i>
@@ -55,27 +58,37 @@
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
+                        @permission('manage_users')
                         <li>
                             <a href="{{route('users.index')}}">
                                 <i class="metismenu-icon">
                                 </i>Users
                             </a>
                         </li>
+                        @endpermission
+                        @permission('manage_roles')
                         <li>
                             <a href="{{route('roles.index')}}">
                                 <i class="metismenu-icon">
                                 </i>Roles
                             </a>
                         </li>
+                        @endpermission
                     </ul>
                 </li>
+                @endpermission
+                @endpermission
+                @permission('manage_categories')
                 <li class="app-sidebar__heading">Categories and Sub-Categories</li>
+                @permission('manage_settings')
                 <li>
                     <a href="{{route('menu.index')}}">
                         <i class="metismenu-icon pe-7s-rocket"></i>
                         Category
                     </a>
                 </li>
+                @endpermission
+                @endpermission
             </ul>
         </div>
     </div>

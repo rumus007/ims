@@ -1,44 +1,52 @@
-@extends('backend.layouts.app')
-
+@extends('separations.master')
 @section('content')
- <h1>Add Menu Title</h1>
-    {!! Form::open(['route' => "admin.menus.create", 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post','files' => true]) !!}
-      <div class="form-group">
-            {!! Form::label('', 'Dropdown', ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-4">
-
-
-              <select id="user_id" class="form-control" name="user_id">
-            
-           
-            <option value="">parent_id</option>
-  
-        <option value="">Home exmpl</option>
-  
-</select>
-
-            </div>
-        </div><!--form control-->
-        <div class="form-group">
-            {!! Form::label('name', 'Title', ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-4">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div>
+                    Create New Category
+                </div>
             </div>
         </div>
-      
-
-        <div class="well">
-            <div class="pull-left">
-                <a href='#' class="btn btn-danger btn-sm">{{ trans('strings.cancel_button') }}</a>
+    </div>
+    <div class="row">
+        {{--All content Over here--}}
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                <form id="category-form" class="" method="POST" action="{{route('menu.store')}}">
+                        {{csrf_field()}}
+                        <div class="position-relative row form-group"><label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input name="title" id="title" placeholder="Enter title" type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="position-relative row form-group"><label for="label" class="col-sm-2 col-form-label">Label</label>
+                            <div class="col-sm-10">
+                                <input name="label" id="label" placeholder="Enter label name" type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="position-relative row form-group"><label for="order" class="col-sm-2 col-form-label">Order</label>
+                            <div class="col-sm-10">
+                                <input name="order" id="order" placeholder="Enter order" type="number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="position-relative row form-group"><label for="position" class="col-sm-2 col-form-label">Position</label>
+                            <div class="col-sm-10">
+                                <input name="menu_position" id="position" placeholder="Enter position" type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="position-relative row form-check">
+                                <div class="col-sm-10 offset-sm-2">
+                                    <button class="btn btn-outline-success" type="submit">Submit</button>
+                                    <a class="btn btn-outline-danger" href="{{route('menu.index')}}">Cancel</a>
+                                </div>
+                            </div>
+                    </form>
+                </div>
             </div>
-
-            <div class="pull-right">
-                <input type="submit" class="btn btn-success btn-sm" value="{{ trans('strings.save_button') }}" />
-            </div>
-            <div class="clearfix"></div>
-        </div><!--well-->
-
-    {!! Form::close() !!}
-
-    <div class="clearfix"></div>
-@stop
+        </div>
+    </div>
+</div>
+@endsection
