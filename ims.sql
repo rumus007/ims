@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2019 at 01:30 PM
+-- Generation Time: Jul 12, 2019 at 02:46 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -19,8 +19,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `alpha`
+-- Database: `ims`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(11) NOT NULL,
+  `parent_id` varchar(255) DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `order` varchar(255) NOT NULL,
+  `menu_position` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `parent_id`, `title`, `label`, `order`, `menu_position`, `created_at`, `updated_at`) VALUES
+(3, NULL, 'First Title', 'first title', '1', 'side', '2019-07-11 05:02:28', '2019-07-12 01:33:00'),
+(4, '3', 'second title', 'second title', '0', 'top', '2019-07-11 05:02:41', '2019-07-11 23:16:35'),
+(5, '4', 'Third title', 'third title', '0', 'top', '2019-07-12 01:36:06', '2019-07-12 01:36:10');
 
 -- --------------------------------------------------------
 
@@ -89,7 +115,12 @@ INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created
 (43, 'add_roles', 'add_roles', NULL, '2019-06-28 05:26:41', '2019-06-28 05:26:41'),
 (44, 'edit_roles', 'edit_roles', NULL, '2019-06-28 05:26:41', '2019-06-28 05:26:41'),
 (45, 'delete_roles', 'delete_roles', NULL, '2019-06-28 05:26:41', '2019-06-28 05:26:41'),
-(46, 'manage_roles', 'manage_roles', NULL, '2019-06-28 05:26:41', '2019-06-28 05:26:41');
+(46, 'manage_roles', 'manage_roles', NULL, '2019-06-28 05:26:41', '2019-06-28 05:26:41'),
+(52, 'view_categories', 'view_categories', NULL, '2019-07-12 01:01:45', '2019-07-12 01:01:45'),
+(53, 'add_categories', 'add_categories', NULL, '2019-07-12 01:01:45', '2019-07-12 01:01:45'),
+(54, 'edit_categories', 'edit_categories', NULL, '2019-07-12 01:01:45', '2019-07-12 01:01:45'),
+(55, 'delete_categories', 'delete_categories', NULL, '2019-07-12 01:01:45', '2019-07-12 01:01:45'),
+(56, 'manage_categories', 'manage_categories', NULL, '2019-07-12 01:01:45', '2019-07-12 01:01:45');
 
 -- --------------------------------------------------------
 
@@ -130,7 +161,13 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (43, 1),
 (44, 1),
 (45, 1),
-(46, 1);
+(46, 1),
+(52, 1),
+(52, 15),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1);
 
 -- --------------------------------------------------------
 
@@ -199,13 +236,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Rumus Bajracharya', 'rumus.3353@gmail.com', NULL, '$2y$10$7L963I1vCF5XCreMBtAyQ.7WDWlPZiXHnJlM2//duRZ/k9dzArkHa', 'dHUMm2CPD3s3b3RrlxBvXbtdljPVQVJV9p3FurloBgl2UTievo2hsPtxyB5O', '2019-06-18 03:31:15', '2019-06-28 00:06:14'),
+(1, 'Rumus Bajracharya', 'rumus.3353@gmail.com', NULL, '$2y$10$7L963I1vCF5XCreMBtAyQ.7WDWlPZiXHnJlM2//duRZ/k9dzArkHa', 'GjCdROzVA5AnTlSB2UphFtpk7IlypHbeOYrlaEhnE5xQsB1gR2AuYVLfdjmf', '2019-06-18 03:31:15', '2019-06-28 00:06:14'),
 (2, 'Lakshya Maharjan', 'lakshya@3hammers.com', NULL, '$2y$10$PDhTtMu5Sf6UJ7mQ3OqNoeXBo1kUnRVe5T3Qn3jlAu//cUws1Y4iy', NULL, '2019-06-27 05:48:54', '2019-06-27 05:48:54'),
-(4, 'neha', 'neha@3hammers.com', NULL, '$2y$10$30v5L6iJUvRetFsiPiEGNOCstgp3EGVk7WSzJ7DHHMlRy5jHOndEe', NULL, '2019-06-28 05:14:59', '2019-06-28 05:46:58');
+(4, 'neha', 'neha@3hammers.com', NULL, '$2y$10$Kd5leWax3WkE.hSl50Rpx.221E0vQ5rVsBYaCC1VziSbplH24r0RC', NULL, '2019-06-28 05:14:59', '2019-07-12 01:07:19');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id`) KEY_BLOCK_SIZE=11;
 
 --
 -- Indexes for table `migrations`
@@ -259,6 +302,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -268,7 +317,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `roles`
