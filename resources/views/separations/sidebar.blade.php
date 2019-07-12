@@ -40,9 +40,9 @@
                         Dashboard
                     </a>
                 </li>
-                @permission('manage_settings','manage_users','manage_roles')
+                @permission('view_settings','view_users','view_roles')
                 <li class="app-sidebar__heading">Settings</li>
-                @permission('manage_settings')
+                @permission('view_settings')
                 <li>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-diamond"></i>
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 @endpermission
-                @permission('manage_users','manage_users')
+                @permission('view_users','view_users')
                 <li>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-car"></i>
@@ -58,7 +58,7 @@
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
-                        @permission('manage_users')
+                        @permission('view_users')
                         <li>
                             <a href="{{route('users.index')}}">
                                 <i class="metismenu-icon">
@@ -66,7 +66,7 @@
                             </a>
                         </li>
                         @endpermission
-                        @permission('manage_roles')
+                        @permission('view_roles')
                         <li>
                             <a href="{{route('roles.index')}}">
                                 <i class="metismenu-icon">
@@ -78,9 +78,9 @@
                 </li>
                 @endpermission
                 @endpermission
-                @permission('manage_categories')
+                @permission('view_categories')
                 <li class="app-sidebar__heading">Categories and Sub-Categories</li>
-                @permission('manage_settings')
+                @permission('view_settings')
                 <li>
                     <a href="{{route('menu.index')}}">
                         <i class="metismenu-icon pe-7s-rocket"></i>

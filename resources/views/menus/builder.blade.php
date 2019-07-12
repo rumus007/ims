@@ -40,7 +40,7 @@
 
 
 <!-- Create new item Modal -->
-<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       {!! Form::open(array('url'=>'admin/menus/new','class'=>'form-horizontal','role'=>'form','files' => true, 'method'
@@ -121,5 +121,5 @@
       {!! Form::close() !!}
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal --> --}}
 @stop
