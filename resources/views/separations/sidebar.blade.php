@@ -20,7 +20,7 @@
                 </span>
             </button>
         </div>
-    </div>
+    </div>    
     <div class="app-header__menu">
         <span>
             <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
